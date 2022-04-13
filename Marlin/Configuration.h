@@ -590,7 +590,7 @@
 
 #if ENABLED(PIDTEMP)
   //#define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
-  //#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
+  #define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
 
@@ -1179,7 +1179,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 27.5, 0, -0.97 }
+#define NOZZLE_TO_PROBE_OFFSET { 27.5, -1, -0.97 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1373,11 +1373,11 @@
 #define Y_BED_SIZE 210
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS 45
-#define Y_MIN_POS 0
+#define X_MIN_POS 0
+#define Y_MIN_POS -5
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE+X_MIN_POS
-#define Y_MAX_POS Y_BED_SIZE
+#define X_MAX_POS X_BED_SIZE+40
+#define Y_MAX_POS Y_BED_SIZE-5
 #define Z_MAX_POS 210
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
@@ -1418,7 +1418,7 @@
 #endif
 
 #if EITHER(MIN_SOFTWARE_ENDSTOPS, MAX_SOFTWARE_ENDSTOPS)
-  //#define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
+  #define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
 #endif
 
 /**
